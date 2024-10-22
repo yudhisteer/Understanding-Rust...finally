@@ -176,5 +176,81 @@ fn main() {
 </p>
 
 
+**Example #4**
+
+```rust
+fn main() {
+    let school = School::new_school();
+    let students = school.students;
+    println!("{:#?}", school.students);
+}
+```
+
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6427e6c4-c027-47ea-8e01-30abd32cc7af" width="60%" />
+</p>
+
+
+
+
+**Example #5**
+
+
+```rust
+fn print_student (student: Student) {
+    println!("{:#?}", student);
+}
+
+
+fn main() {
+    let student = Student::new_student(7, String::from("Joe"));
+    print_student(student);
+    println!("{:#?}", student.name);
+}
+```
+
+
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/245854c9-63cc-4fce-951b-77c300ba4b65" width="80%" />
+</p>
+
+
+**Example #6**
+
+```rust
+fn print_student (student: Student) {
+    println!("{:#?}", student);
+}
+
+fn print_name(name: String) {
+    println!("{:#?}", name);
+}
+
+fn main() {
+    let student = Student::new_student(7, String::from("Joe"));
+    print_name(student.name);
+    print_student(student);
+}
+```
+
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/543ef163-7720-414a-94dd-d89a35e01363" width="80%" />
+</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 -------------
