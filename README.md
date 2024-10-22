@@ -123,6 +123,53 @@ note: if `Account` implemented `Clone`, you could clone the value
 
 
 
+**Example #1**
+
+```rust
+fn main() {
+    let school = School::new_school();
+    let other_school = school;
+    println!("{:#?}", school);
+}
+```
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a8e6f2c7-c036-48da-8cc1-2303b4b5cdd3" width="60%" />
+</p>
+
+**Example #2**
+
+```rust
+fn print_student (student: Student) {
+    println!("{:#?}", student);
+}
+
+fn main() {
+    let new_student = Student::new_student(7, String::from("Joe"));
+    print_student(new_student);
+    print_student(new_student);
+}
+```
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/08a98042-27ab-4744-a4d0-c709e4c035f8" width="70%" />
+</p>
+
+
+**Example #3**
+
+```rust
+fn print_student (student: Student) {
+    println!("{:#?}", student);
+}
+
+
+fn main() {
+    let student = Student::new_student(7, String::from("Joe"));
+    let list_of_students = vec![student];
+    print_student(student);
+}
+```
 
 
 -------------
