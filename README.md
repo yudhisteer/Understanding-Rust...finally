@@ -18,6 +18,11 @@
 
 ### 1.2 Ownership and Borrowing
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f9172b1e-4347-4278-96c2-cae4267c498c" width="50%" />
+</p>
+
+
 
 ```rust
 #[derive(Debug)]
@@ -96,6 +101,25 @@ note: if `Account` implemented `Clone`, you could clone the value
    |                   ----------- you could clone this value
 
 ```
+
+**Ownership**
+
+1. Every value is "owned" by a single variable, struct, vector, etc. at a time.
+2. Reassigning the value to another variable, passing it to a function, or putting it into a vector moves the value. The old variable can't be used anymore!
+   
+**Borrowing**
+
+3. You can create many read-only references to a value that exist at the same time.
+4. You can't move a value while a reference to the value exists.
+5. You can make a writable (mutable) reference to a value only if there are no read-only references currently in use. One mutable reference to a value can exist at a time.
+6. You can't mutate a value through the owner when any reference (mutable or immutable) to the value exists.
+7. Some types of values are copied instead of moved (numbers, booleans, characters, arrays/tuples with copyable elements).
+
+**Lifetimes**
+
+8. When a variable goes out of scope, the value owned by it is dropped (cleaned up in memory).
+9. Values can't be dropped if there are still active references to them.
+10. References to a value can't outlive the value they refer to.
 
 
 
