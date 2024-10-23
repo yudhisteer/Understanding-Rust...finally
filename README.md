@@ -546,5 +546,9 @@ fn main() {
 }
 ```
 
+Storing a value --> Take ownership (receive a value)
+Calculation with a value --> Read-only ref (&)
+Change a value --> Mutable Ref (&mut)
+
 
 -------------
