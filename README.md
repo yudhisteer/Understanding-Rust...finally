@@ -63,50 +63,6 @@ impl School {
 }
 ```
 
-```rust
-fn print_student (student: Student) {
-    println!("{:#?}", student);
-}
-```
-
-```rust
-fn main() {
-    let new_school = School::new_school();
-    let new_student = Student::new_student(7, String::from("Joe"));
-    print_student(new_student);
-    print_student(new_student);
-}
-```
-
-```rust
-error[E0382]: use of moved value: `new_account`
-  --> src/main.rs:45:19
-   |
-41 |     let new_account = Account::new(1, String::from("Joe"));
-   |         ----------- move occurs because `new_account` has type `Account`, which does not implement the `Copy` trait
-...
-44 |     print_account(new_account);
-   |                   ----------- value moved here
-45 |     print_account(new_account);
-   |                   ^^^^^^^^^^^ value used here after move
-   |
-note: consider changing this parameter type in function `print_account` to borrow instead if owning the value isn't necessary
-  --> src/main.rs:34:28
-   |
-34 | fn print_account (account: Account) {
-   |    -------------           ^^^^^^^ this parameter takes ownership of the value
-   |    |
-   |    in this function
-note: if `Account` implemented `Clone`, you could clone the value
-  --> src/main.rs:4:1
-   |
-4  | struct Account {
-   | ^^^^^^^^^^^^^^ consider implementing `Clone` for this type
-...
-44 |     print_account(new_account);
-   |                   ----------- you could clone this value
-
-```
 
 
 
@@ -115,6 +71,10 @@ note: if `Account` implemented `Clone`, you could clone the value
 **Example #1**
 
 ```rust
+fn print_student (student: Student) {
+    println!("{:#?}", student);
+}
+
 fn main() {
     let school = School::new_school();
     let other_school = school;
