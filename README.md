@@ -319,23 +319,120 @@ fn main() {
 
 
 
+```rust
+fn change_score (student: &mut Student) {
+    student.score = 100;
+}
+
+fn main() {
+    let mut student = Student::new_student(7, String::from("Joe"));
+    change_score(&mut student);
+    println!("{:#?}", student);
+}
+```
+
+
+Not to do:
+
+
+```rust
+fn change_score (student: &mut Student) {
+    student.score = 100;
+}
+
+fn main() {
+    let mut student = Student::new_student(7, String::from("Joe"));
+    let student_ref = &student;
+    change_score(&mut student);
+    println!("{:#?}", student_ref.name);
+}
+```
+
+```rust
+error[E0502]: cannot borrow `student` as mutable because it is also borrowed as immutable
+  --> src/test.rs:49:18
+   |
+48 |     let student_ref = &student;
+   |                       -------- immutable borrow occurs here
+49 |     change_score(&mut student);
+   |                  ^^^^^^^^^^^^ mutable borrow occurs here
+50 |     println!("{:#?}", student_ref.name);
+   |                       ---------------- immutable borrow later used here
+```
 
 
 
 
 
 
+```rust
+fn change_score (student: &mut Student) {
+    student.score = 100;
+}
+
+fn main() {
+    let mut student = Student::new_student(7, String::from("Joe"));
+    let student_ref = &mut student;
+    change_score(&mut student);
+    println!("{:#?}", student_ref.name);
+}
+
+```rust
+error[E0499]: cannot borrow `student` as mutable more than once at a time
+  --> src/test.rs:49:18
+   |
+48 |     let student_ref = &mut student;
+   |                       ------------ first mutable borrow occurs here
+49 |     change_score(&mut student);
+   |                  ^^^^^^^^^^^^ second mutable borrow occurs here
+50 |     println!("{:#?}", student_ref.name);
+   |                       ---------------- first borrow later used here
+```
 
 
 
+```rust
+fn change_score (student: &mut Student) {
+    student.score = 100;
+}
+
+fn main() {
+    let mut student = Student::new_student(7, String::from("Joe"));
+    let student_ref = &mut student;
+    student.score = 100;
+    change_score(student_ref);
+    println!("{:#?}", student);
+}
+```
+
+```rust
+error[E0506]: cannot assign to `student.score` because it is borrowed
+  --> src/test.rs:49:5
+   |
+48 |     let student_ref = &mut student;
+   |                       ------------ `student.score` is borrowed here
+49 |     student.score = 100;
+   |     ^^^^^^^^^^^^^^^^^^^ `student.score` is assigned to here but it was already borrowed
+50 |     change_score(student_ref);
+   |                  ----------- borrow later used here
+```
 
 
 
+To do:
 
+```rust
+fn add_student(school: &mut School, student: Student) {
+    school.students.push(student);
+}
 
-
-
-
+fn main() {
+    let mut school = School::new_school();
+    let student = Student::new_student(7, String::from("Joe"));
+    add_student(&mut school, student);
+    println!("{:#?}", school);
+}
+```
 
 
 **Lifetimes**
