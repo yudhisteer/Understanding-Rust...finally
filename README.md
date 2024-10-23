@@ -509,6 +509,25 @@ fn main() {
 }
 ```
 
+```
+School {
+    students: [
+        Student {
+            id: 7,
+            name: "Joe",
+            score: 0,
+        },
+    ],
+}
+
+
+Student {
+    id: 7,
+    name: "Joe",
+    score: 0,
+}
+```
+
 
 **Lifetimes**
 
