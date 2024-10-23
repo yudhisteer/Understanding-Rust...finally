@@ -505,6 +505,7 @@ fn main() {
     let student = Student::new_student(7, String::from("Joe"));
     add_student(&mut school, student);
     println!("{:#?}", school);
+    println!("{:#?}", school.students[0]); // print 'student' value
 }
 ```
 
@@ -545,7 +546,7 @@ fn main() {
 
     let student_ref = &student; // Immutable reference to 'student'
  
-    print_score(student_ref); // Borrowing 'student' as immutable for printing its balance
+    print_score(student_ref); // Borrowing 'student' as immutable for printing its score
  
     school.students.push(student); // 'student' is moved into 'school.accounts'
 }
