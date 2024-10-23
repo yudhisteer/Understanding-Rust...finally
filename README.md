@@ -518,6 +518,10 @@ fn main() {
 
 
 ```rust
+fn print_score(student: &Student) {
+    println!("{}", student.score);
+}
+
 fn main() {
     let mut school = School::new_school();
     let student = Student::new_student(1, String::from("me"));
@@ -531,6 +535,10 @@ fn main() {
 ```
 
 ```rust
+fn print_score(student: &Student) {
+    println!("{}", student.score);
+}
+
 fn main() {
     let mut school = School::new_school();
     let student = Student::new_student(1, String::from("me"));
