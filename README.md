@@ -107,19 +107,6 @@ note: if `Account` implemented `Clone`, you could clone the value
 1. Every value is "owned" by a single variable, struct, vector, etc. at a time.
 2. Reassigning the value to another variable, passing it to a function, or putting it into a vector moves the value. The old variable can't be used anymore!
    
-**Borrowing**
-
-3. You can create many read-only references to a value that exist at the same time.
-4. You can't move a value while a reference to the value exists.
-5. You can make a writable (mutable) reference to a value only if there are no read-only references currently in use. One mutable reference to a value can exist at a time.
-6. You can't mutate a value through the owner when any reference (mutable or immutable) to the value exists.
-7. Some types of values are copied instead of moved (numbers, booleans, characters, arrays/tuples with copyable elements).
-
-**Lifetimes**
-
-8. When a variable goes out of scope, the value owned by it is dropped (cleaned up in memory).
-9. Values can't be dropped if there are still active references to them.
-10. References to a value can't outlive the value they refer to.
 
 
 
@@ -264,6 +251,70 @@ fn main() {
 
 ### Borrow System
 
+**Borrowing - Immutable References**
+
+3. You can create many read-only references to a value that exist at the same time.
+4. You can't move a value while a reference to the value exists.
+
+
+
+```rust
+fn print_student(student: &Student) {
+    println!("{:#?}", student);
+}
+
+fn main() {
+    let student = Student::new_student(7, String::from("Joe"));
+    print_student(&student);
+    println!("{:?}", student);
+}
+```
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/68f46487-f298-470e-a807-0cc2e2990f23" width="80%" />
+</p>
+
+
+Here, we see the & operator being used on a type. This means the arguments needs to be a reference to a value. 
+
+```rust
+fn print_student(student: &Student) {
+```
+
+& operator being used on an owner of a value. this mens we wil create a reference to this value.
+
+```rust
+print_student(&student);
+```
+
+Rule no 4. 
+
+```rust
+fn print_student(student: &Student) {
+    println!("{:#?}", student);
+}
+
+fn main() {
+    let student = Student::new_student(7, String::from("Joe"));
+    
+    print_student(&student);
+    print_student(&student);
+
+    let other_student = student;
+    println!("{:?}", student);
+}
+```
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8485721d-4249-4f2e-b325-7fe94f10356a" width="80%" />
+</p>
+
+
+**Borrowing - Mutable References**
+
+5. You can make a writable (mutable) reference to a value only if there are no read-only references currently in use. One mutable reference to a value can exist at a time.
+6. You can't mutate a value through the owner when any reference (mutable or immutable) to the value exists.
+7. Some types of values are copied instead of moved (numbers, booleans, characters, arrays/tuples with copyable elements).
 
 
 
@@ -271,5 +322,26 @@ fn main() {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+**Lifetimes**
+
+8. When a variable goes out of scope, the value owned by it is dropped (cleaned up in memory).
+9. Values can't be dropped if there are still active references to them.
+10. References to a value can't outlive the value they refer to.
 
 -------------
