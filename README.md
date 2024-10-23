@@ -515,4 +515,33 @@ fn main() {
 9. Values can't be dropped if there are still active references to them.
 10. References to a value can't outlive the value they refer to.
 
+
+
+```rust
+fn main() {
+    let mut school = School::new_school();
+    let student = Student::new_student(1, String::from("me"));
+
+    let student_ref = &student; // Immutable reference to 'account'
+ 
+    school.students.push(student); // Error: 'student' is moved here
+
+    print_score(student_ref); // Error: Cannot use 'student_ref' after 'student' has been moved
+}
+```
+
+```rust
+fn main() {
+    let mut school = School::new_school();
+    let student = Student::new_student(1, String::from("me"));
+
+    let student_ref = &student; // Immutable reference to 'student'
+ 
+    print_score(student_ref); // Borrowing 'student' as immutable for printing its balance
+ 
+    school.students.push(student); // 'student' is moved into 'school.accounts'
+}
+```
+
+
 -------------
