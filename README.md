@@ -372,12 +372,26 @@ fn print_student(student: &Student) {
 fn main() {
     let student = Student::new_student(7, String::from("Joe"));
     
-    print_student(&student);
-    print_student(&student);
+    print_student(&student);      // First immutable borrow
+    print_student(&student);      // Second immutable borrow
 
-    let other_student = student;
-    println!("{:?}", student);
+    let other_student = student;  // Ownership of 'student' is moved to 'other_student'
+    println!("{:?}", student);    // Error: 'student' has been moved and can no longer be used
 }
+```
+
+```rust
+error[E0382]: borrow of moved value: `student`
+  --> src/test.rs:63:22
+   |
+57 |     let student = Student::new_student(7, String::from("Joe"));
+   |         ------- move occurs because `student` has type `Student`, which does not implement the `Copy` trait
+...
+62 |     let other_student = student;
+   |                         ------- value moved here
+63 |     println!("{:?}", student);
+   |                      ^^^^^^^ value borrowed here after move
+   |
 ```
 
 <p align="center">
