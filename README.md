@@ -120,6 +120,19 @@ fn main() {
 }
 ```
 
+```rust
+error[E0382]: borrow of moved value: `school`
+  --> src/test.rs:53:23
+   |
+51 |     let school = School::new_school();
+   |         ------ move occurs because `school` has type `School`, which does not implement the `Copy` trait
+52 |     let other_school = school;
+   |                        ------ value moved here
+53 |     println!("{:#?}", school);
+   |                       ^^^^^^ value borrowed here after move
+   |
+```
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/a8e6f2c7-c036-48da-8cc1-2303b4b5cdd3" width="60%" />
 </p>
@@ -136,6 +149,19 @@ fn main() {
     print_student(new_student);
     print_student(new_student);
 }
+```
+
+```rust
+error[E0382]: use of moved value: `new_student`
+  --> src/test.rs:53:19
+   |
+51 |     let new_student = Student::new_student(7, String::from("Joe"));
+   |         ----------- move occurs because `new_student` has type `Student`, which does not implement the `Copy` trait
+52 |     print_student(new_student);
+   |                   ----------- value moved here
+53 |     print_student(new_student);
+   |                   ^^^^^^^^^^^ value used here after move
+   |
 ```
 
 <p align="center">
@@ -158,6 +184,19 @@ fn main() {
 }
 ```
 
+```rust
+error[E0382]: use of moved value: `student`
+  --> src/test.rs:53:19
+   |
+51 |     let student = Student::new_student(7, String::from("Joe"));
+   |         ------- move occurs because `student` has type `Student`, which does not implement the `Copy` trait
+52 |     let list_of_students = vec![student];
+   |                                 ------- value moved here
+53 |     print_student(student);
+   |                   ^^^^^^^ value used here after move
+   |
+```
+
 <p align="center">
   <img src="https://github.com/user-attachments/assets/3a96f2c1-999e-46a0-b155-59dcf0254f7b" width="70%" />
 </p>
@@ -171,6 +210,16 @@ fn main() {
     let students = school.students;
     println!("{:#?}", school.students);
 }
+```
+
+```rust
+error[E0382]: borrow of moved value: `school.students`
+  --> src/test.rs:53:23
+   |
+52 |     let students = school.students;
+   |                    --------------- value moved here
+53 |     println!("{:#?}", school.students);
+   |                       ^^^^^^^^^^^^^^^ value borrowed here after move
 ```
 
 
@@ -197,6 +246,18 @@ fn main() {
 }
 ```
 
+```rust
+error[E0382]: borrow of moved value: `student`
+  --> src/test.rs:54:23
+   |
+52 |     let student = Student::new_student(7, String::from("Joe"));
+   |         ------- move occurs because `student` has type `Student`, which does not implement the `Copy` trait
+53 |     print_student(student);
+   |                   ------- value moved here
+54 |     println!("{:#?}", student.name);
+   |                       ^^^^^^^^^^^^ value borrowed here after move
+```
+
 
 
 <p align="center">
@@ -220,6 +281,18 @@ fn main() {
     print_name(student.name);
     print_student(student);
 }
+```
+
+```rust
+error[E0382]: use of partially moved value: `student`
+  --> src/test.rs:54:19
+   |
+53 |     print_name(student.name);
+   |                ------------ value partially moved here
+54 |     print_student(student);
+   |                   ^^^^^^^ value used here after partial move
+   |
+   = note: partial move occurs because `student.name` has type `String`, which does not implement the `Copy` trait
 ```
 
 
@@ -376,6 +449,7 @@ fn main() {
     change_score(&mut student);
     println!("{:#?}", student_ref.name);
 }
+```
 
 ```rust
 error[E0499]: cannot borrow `student` as mutable more than once at a time
