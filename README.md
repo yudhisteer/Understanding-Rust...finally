@@ -242,8 +242,27 @@ fn main() {
 
 
 
+### "Workaround"
 
+```rust
+fn print_student(student: Student) -> Student {
+    println!("{:#?}", student);
+    student //implicit return
+}
 
+fn main() {
+    let mut student = Student::new_student(7, String::from("Joe"));
+    student = print_student(student);
+    student = print_student(student);
+    println!("{:?}", student);
+}
+```
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/b2a886b2-6c81-4e98-b3d6-64ad91482d76" width="80%" />
+</p>
+
+### Borrow System
 
 
 
