@@ -1,23 +1,18 @@
-# Data-Structures-with-Rust
+# Understanding Rust...finally
 
 ## Plan of Action
-1. Intro to Rust
-    - Core Concepts
-    - Ownership
-    - Borrowing
-    - Lifetimes
-
-2. Linked Lists
+1. Core Concepts
+2. Ownership
+3. Borrowing
+4. Lifetimes
 
 
 ---------------------------
-## 1. Intro to Rust
-
-### 1.1 Core Concepts
+## 1. Core Concepts
 
 
 
-### 1.2 Ownership
+## 2 Ownership
 
 - Every value is "owned" by a single variable, struct, vector, etc. at a time.
 - Reassigning the value to another variable, passing it to a function, or putting it into a vector moves the value. The old variable can't be used anymore!
@@ -262,7 +257,7 @@ error[E0382]: use of partially moved value: `student`
   <img src="https://github.com/user-attachments/assets/543ef163-7720-414a-94dd-d89a35e01363" width="80%" />
 </p>
 
-### 1.3 Borrowing
+## 3 Borrowing
 
 
 #### "Workaround"
@@ -286,7 +281,7 @@ fn main() {
 </p>
 
 
-**Borrowing - Immutable References**
+### 3.1 Borrowing - Immutable References
 
 - You can create many read-only references to a value that exist at the same time.
 - You can't move a value while a reference to the value exists.
@@ -359,7 +354,7 @@ error[E0382]: borrow of moved value: `student`
 </p>
 
 
-**Borrowing - Mutable References**
+### 3.2 Borrowing - Mutable References
 
 - You can make a writable (mutable) reference to a value only if there are no read-only references currently in use. One mutable reference to a value can exist at a time.
 - You can't mutate a value through the owner when any reference (mutable or immutable) to the value exists.
@@ -504,7 +499,7 @@ Student {
 }
 ```
 
-### 1.4 Lifetimes
+## 4 Lifetimes
 
 - When a variable goes out of scope, the value owned by it is dropped (cleaned up in memory).
 - Values can't be dropped if there are still active references to them.
