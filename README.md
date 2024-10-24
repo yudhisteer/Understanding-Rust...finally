@@ -1,17 +1,24 @@
 # Understanding Rust...finally
 
 ## Plan of Action
-1. Core Concepts
-2. Ownership
-3. Borrowing
-4. Lifetimes
+1. [Core Concepts](#cc)
+2. [Ownership](#o)
+3. [Borrowing](#b)
+4. [Lifetimes](#l)
+5. [Enums](#e)
+6. [Handling Errors](#he)
+7. [Iterator](#i)
+8. [Advanced Lifetimes](#al)
+9. [Generics](#g)
+10. [Traits](#t)
 
 
 ---------------------------
+<a name="cc"></a>
 ## 1. Core Concepts
 
 
-
+<a name="o"></a>
 ## 2 Ownership
 
 - Every value is "owned" by a single variable, struct, vector, etc. at a time.
@@ -257,6 +264,7 @@ error[E0382]: use of partially moved value: `student`
   <img src="https://github.com/user-attachments/assets/543ef163-7720-414a-94dd-d89a35e01363" width="80%" />
 </p>
 
+<a name="b"></a>
 ## 3 Borrowing
 
 
@@ -499,6 +507,7 @@ Student {
 }
 ```
 
+<a name="l"></a>
 ## 4 Lifetimes
 
 - When a variable goes out of scope, the value owned by it is dropped (cleaned up in memory).
