@@ -508,7 +508,7 @@ Student {
 ```
 
 <a name="l"></a>
-## 4 Lifetimes
+## 4. Lifetimes
 
 - When a variable goes out of scope, the value owned by it is dropped (cleaned up in memory).
 - Values can't be dropped if there are still active references to them.
@@ -556,3 +556,19 @@ Change a value --> Mutable Ref (&mut)
 
 
 -------------
+
+<a name="l"></a>
+## 5. Enums
+
+
+-------------
+
+<a name="l"></a>
+## 6. Handling Errors
+
+
+
+-------------
+
+
+## References
