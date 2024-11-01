@@ -572,3 +572,6 @@ Change a value --> Mutable Ref (&mut)
 
 
 ## References
+https://smallcultfollowing.com/babysteps/blog/2016/04/27/non-lexical-lifetimes-introduction/
+https://www.figma.com/blog/rust-in-production-at-figma/
+https://www.rykap.com/2020/09/23/distance-fields/
