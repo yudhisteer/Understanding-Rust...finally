@@ -110,7 +110,7 @@ fn main() {
 
 
     /*------------------------------------- Type Aliases -------------------------------------*/
-    type Point = (i32, i32);
+    type Point = (i32, i32); // Types must have UpperCamelCase
     let origin: Point = (0, 0);
     println!("Origin is {:?}", origin);
 
