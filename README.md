@@ -18,6 +18,56 @@
 ## 1. Core Concepts
 
 
+1. To create new Rust project:
+
+```rust
+cargo new project_name
+```
+
+2. To run the project (quiet mode):
+```rust
+cargo run --quiet
+cargo r -q
+```
+
+3. Formatting code:
+```rust
+cargo fmt
+```
+
+4. Compile the project (debug mode):
+```rust
+cargo build
+```
+
+5. Compile the project (release mode):
+```rust
+cargo build --release
+```
+
+6. Clean the project:
+```rust
+cargo clean
+```
+
+7. Check the project:
+```rust
+cargo check
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <a name="o"></a>
 ## 2 Ownership
 
