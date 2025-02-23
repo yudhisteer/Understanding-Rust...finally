@@ -22,11 +22,11 @@ fn main() {
     /*------------------------------------- Variables -------------------------------------*/
     // We declare some variables with let keyword
     let dogs: i32 = 5;
-    let some_float_number = 0.05;
-    let sum_float = 2.0 + 3.0; 
-    let _unused_variable = 3;   // starts with underscore
+    let some_float_number: f64 = 0.05;
+    let sum_float: f64 = 2.0 + 3.0; 
+    let _unused_variable: i32 = 3;   // starts with underscore
 
-    let dogs = 45; // variable can still be changed
+    let dogs: i32 = 45; // variable can still be changed
     
     println!("I have {} dogs", dogs);
     println!("I have {} as float number and {} as sum float", some_float_number, sum_float);
@@ -39,15 +39,15 @@ fn main() {
 
     /*------------------------------------- Mutability -------------------------------------*/
     // mutated variable
-    let mut cats = 10; 
+    let mut cats: i32 = 10; 
     println!("I have {} cats", cats);
     // cats = 11.0; // mismatch type - we cannot change the type
     cats = 11; // mutated variable
     println!("I now have {} cats", cats);
 
     // another example with mutability
-    let mut mut_value = 10;
-    let unmut_value = 100;
+    let mut mut_value: i32 = 10;
+    let unmut_value: i32 = 100;
 
     mut_value += 1;
     println!("mut_value is {}", mut_value);
@@ -58,34 +58,34 @@ fn main() {
 
 
     /*------------------------------------- Shadowing -------------------------------------*/
-    let x = 10;
-    let x = x + 1;
-    let x = x * 2;
+    let x: i32 = 10;
+    let x: i32 = x + 1;
+    let x: i32 = x * 2;
     println!("x is {}", x);
 
-    let value = 10;
+    let value: i32 = 10;
     println!("value is {}", value);
 
-    let value = "Hello"; // change type of value
+    let value: &str = "Hello"; // change type of value
     println!("value is {}", value);
 
-    let value = true; // change type of value
+    let value: bool = true; // change type of value
     println!("value is {}", value);
 
 
 
     /*------------------------------------- Scope -------------------------------------*/
-    let rice = 100;
+    let rice: i32 = 100;
     println!("rice is {}", rice);
 
-    let butter = 50;
+    let butter: i32 = 50;
 
     // inner scope
     {
-        let bread = 200;    
+        let bread: i32 = 200;    
         println!("bread is {}", bread);
 
-        let butter = 500; // shadowing
+        let butter: i32 = 500; // shadowing
         println!("butter is {}", butter);
     }
 
@@ -122,12 +122,12 @@ fn main() {
 
     /*------------------------------------- Compiler Directives -------------------------------------*/
     #[allow(unused_variables)]
-    let unused_variable = 3; // no warning
+    let unused_variable: i32 = 3; // no warning
 
     // have to be added for each unused variable
     #[allow(unused_variables)]
-    let another_unused_variable = 4;
+    let another_unused_variable: i32 = 4;
 
     // no warning because it is allowed in the main function
-    let yet_another_unused_variable = 5; 
+    let yet_another_unused_variable: i32 = 5; 
 }
