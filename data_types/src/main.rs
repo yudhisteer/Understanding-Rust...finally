@@ -42,6 +42,50 @@ fn main() {
     println!("{}", int2); // print as 2
     println!("{}", float2); // print as 2.5323233604431152
 
+
+    /* ------------------------------------- Boolean ------------------------------------- */
+    let bool1: bool = true;
+    let bool2: bool = false;
+
+    println!("{}", bool1);
+    println!("{}", bool2);
+
+    // ! operator
+    let bool3: bool = !true;
+    println!("{}", bool3); // print as false
+
+
+    /* ------------------------------------- Array ------------------------------------- */
+    // In Rust, we can't directly create a heterogeneous array like [1, 0.9, true, "string"] 
+    //because arrays and vectors require all elements to be of the same type.
+    let array1: [i32; 5] = [1, 2, 3, 4, 5];
+    let names: [&str; 3] = ["John", "Jane", "Doe"];
+    let empty_array: [i32; 0] = []; //type annotation is required for empty array
+
+    println!("{:?}", array1);
+    println!("{}", array1[0]); // print as 1
+    println!("{}", array1[1]); // print as 2
+    println!("{}", array1[2]); // print as 3
+    println!("{}", array1[3]); // print as 4
+    println!("{}", array1[4]); // print as 5
+    
+    println!("{:?}", names);
+    println!("{:?}", empty_array);
+
+    // mutable array
+    let mut array2: [i32; 5] = [1, 2, 3, 4, 5];
+    array2[0] = 10;
+    (&mut array2)[1] = 20; // mutable reference to the array
+    println!("{:?}", array2); // print as [10, 20, 3, 4, 5]
+
+
+    
+    
+    
+    
+    
+    
+    
     
 
 }
