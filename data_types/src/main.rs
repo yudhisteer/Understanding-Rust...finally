@@ -18,11 +18,29 @@ fn main() {
     let value: isize = 1000; // isize is the size of the pointer in the computer
     println!("{}", value);
     println!("Size of isize: {} bytes or {} bits", std::mem::size_of::<isize>(), std::mem::size_of::<isize>() * 8); // 8 bytes on my computer
-    
-    
 
+
+    /* ------------------------------------- Floating Point Numbers ------------------------------------- */
+    let float1: f32 = 2.53232332323232; //print as 2.5323234
+    let float2: f64 = 2.53232332323232323232; //print as 2.5323233232323235
+
+    println!("{}", float1);
+    println!("{}", float2);
     
-    
+    // print with precision
+    println!("{:.2} || {:.3} || {:.4}", 123.4567, 234.45678, 456.78912);
+
+
+    /* ------------------------------------- Casting with As ------------------------------------- */
+    let int1: i8 = 127;
+    let float1: f32 = 2.53232332323232;
+    println!("{}", float1); // print as 2.5323234
+
+    let int2 = float1 as i64;
+    let float2: f64 = float1 as f64;
+
+    println!("{}", int2); // print as 2
+    println!("{}", float2); // print as 2.5323233604431152
 
     
 
