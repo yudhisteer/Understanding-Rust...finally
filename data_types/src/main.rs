@@ -1,5 +1,7 @@
 #![allow(unused_variables)]
 
+use std::ops::{Range, RangeInclusive};
+
 fn main() {
 
     /*------------------------------------- Integers -------------------------------------*/
@@ -78,14 +80,125 @@ fn main() {
     (&mut array2)[1] = 20; // mutable reference to the array
     println!("{:?}", array2); // print as [10, 20, 3, 4, 5]
 
+    // immutable array
+    let array3: [i32; 5] = [3; 5]; // [3, 3, 3, 3, 3]
+    println!("{:?}", array3);
+    //array3[0] = 10; // error: cannot mutate immutable variable
 
-    
-    
-    
-    
-    
-    
-    
-    
 
+
+    /* ------------------------------------- Display Trait ------------------------------------- */
+    // Display is for user-facing output formatting, meant to be clean and readable
+    let int1: i32 = 1;
+    let float1: f64 = 2.5;
+    let bool1: bool = true;
+    let str1: &str = "Hello";
+
+    // Display output - clean, user-friendly format
+    println!("{}", int1);
+    println!("{}", float1);
+    println!("{}", bool1);
+    println!("{}", str1);
+
+    // Debug output - more detailed, development-oriented format
+    println!("{:?}", int1);
+    println!("{:?}", float1);
+    println!("{:?}", bool1);
+    println!("{:?}", str1);
+
+    // Pretty debug output with {:#?} for more complex structures
+    println!("{:#?}", int1);
+    println!("{:#?}", float1);
+    println!("{:#?}", bool1);
+    println!("{:#?}", str1);
+
+
+
+    /* ------------------------------------- Debug Trait ------------------------------------- */
+    // Debug is for debugging/development purposes, showing more detailed internal representation
+    let array1: [i32; 5] = [1, 2, 3, 4, 5];
+    println!("{:?}", array1);
+    println!("{array1:?}"); // same as {:?}
+
+    let tuple1: (i32, f64, bool, &str) = (1, 2.5, true, "Hello");
+    println!("{:?}", tuple1); // print as (1, 2.5, true, "Hello")
+    println!("{:#?}", tuple1); // pretty print
+    /*
+    print as:
+    (
+        1,
+        2.5,
+        true,
+        "Hello",
+    )
+    */
+
+    // #[derive(Debug)] is an attribute that automatically implements the Debug trait
+    // for a struct or enum, allowing it to be printed with {:?} format specifier.
+    // This saves us from having to manually implement Debug for our custom types.
+
+
+
+    /* ------------------------------------- dbg! Macro ------------------------------------- */
+    let array1: [i32; 5] = [1, 2, 3, 4, 5];
+    dbg!(array1);
+
+    /*
+    print as:
+    [src\main.rs:142:5] array1 = [
+    1,
+    2,
+    3,
+    4,
+    5,
+    ]
+     */
+
+
+    /* ------------------------------------- Tuple ------------------------------------- */
+    let tuple: (i32, f64, bool, &str) = (1, 2.5, true, "Hello");
+    println!("{:?}", tuple1); // print as (1, 2.5, true, "Hello")
+
+    // accessing elements
+    let int_value = tuple.0;
+    let float_value = tuple.1;
+    let bool_value = tuple.2;
+    let str_value = tuple.3;
+
+    println!("{}", int_value); // print as 1
+    println!("{}", float_value); // print as 2.5
+    println!("{}", bool_value); // print as true
+    println!("{}", str_value); // print as Hello
+
+    // destructuring
+    let (int_value, float_value, bool_value, str_value) = tuple;
+    println!("{}", int_value); // print as 1
+    println!("{}", float_value); // print as 2.5
+    println!("{}", bool_value); // print as true
+    println!("{}", str_value); // print as Hello
+
+
+
+    /* ------------------------------------- Range ------------------------------------- */
+    let range1: Range<i32> = 1..5;
+    println!("{:#?}", range1); // print as 1..5
+
+    let range2: RangeInclusive<i32> = 1..=5;
+    println!("{:#?}", range2); // print as 1..=5
+
+    let letters: RangeInclusive<char> = 'a'..='e';
+    println!("{:#?}", letters); // print as a..=e
+
+    for i in range1 {
+        println!("{}", i); // print as 1, 2, 3, 4
+    }
+
+    for i in range2 {
+        println!("{}", i); // print as 1, 2, 3, 4, 5
+    }
+
+    for i in letters {
+        println!("{}", i); // print as a, b, c, d, e
+    }
+    
 }
