@@ -5,6 +5,11 @@ fn even_or_odd(n: i32) {
 }
 
 fn main() {
+
+    // --------------------------------------------------------------
+   // If else statements
+   // --------------------------------------------------------------
+
     let day: &str = "Monday";
 
     // Dependent if statements
@@ -34,7 +39,11 @@ fn main() {
     even_or_odd(2);
     even_or_odd(3);
 
-    //Match statement
+
+
+    // --------------------------------------------------------------
+    // Match statement
+    // --------------------------------------------------------------
     let evaluation: bool = true;
 
     match evaluation {
@@ -66,5 +75,142 @@ fn main() {
         "Winter" => println!("It's winter"),
         _ => println!("Not a valid season"), // _ is a catch all same as else
     };
+
+
+    // match with pipe
+    let number: i32 = 10;
+
+    match number {
+        1 | 3 | 5 | 7 | 9 => println!("It's an odd number"),
+        2 | 4 | 6 | 8 | 10 => println!("It's an even number"),
+        _ => println!("It's not a number"),
+    };
+
+    // match with assignment
+    let number: i32 = 10;
+
+    match number {
+        n if n % 2 == 0 => println!("It's an even number"),
+        n if n % 2 != 0 => println!("It's an odd number"),
+        _ => unreachable!() // this is line will never be reached
+    };
+
+    // match with no assignment
+    let number: i32 = 10;
+
+    match number{
+        _ if number % 2 == 0 => println!("{number} is an even number"),
+        _ if number % 2 != 0 => println!("{number} is an odd number"),
+        _ => unreachable!() // this is line will never be reached
+   }
+
+
+
+   // --------------------------------------------------------------
+   // loop
+   // --------------------------------------------------------------    
+   let mut seconds: i32 = 10;
+
+   loop
+   {
+
+    if seconds == 0 {
+        break; // break the loop
+    }
+
+    println!("{} seconds left", seconds);
+    seconds -= 1;
+
+   }
+
+   // loop with continue
+   let mut seconds: i32 = 21;
+
+   loop 
+   {
+    if seconds <= 0 {
+        println!("Blast off!");
+        break;
+    }
+
+    // option 1:
+    if seconds % 2 == 0 {
+        println!("{} seconds (even number), skipping 3 seconds", seconds);
+        seconds -= 3;
+        continue; // skip the rest of the loop and go to the next iteration
+    }
+    
+    println!("{} seconds left", seconds);
+    seconds -= 1;
+
+    // option 2: same as above but with if else
+    // if seconds % 2 == 0 {
+    //     println!("{} seconds (even number), skipping 3 seconds", seconds);
+    //     seconds -= 3;
+    // }
+    // else 
+    // {
+    //     println!("{} seconds left", seconds);
+    //     seconds -= 1;
+    // }
+
+   }
+
+
+
+   // --------------------------------------------------------------
+   // While loop
+   // --------------------------------------------------------------
+
+   let mut seconds: i32 = 21;
+
+   while seconds > 0 {
+
+    // Do not need this as while loop will break when seconds <= 0
+    // if seconds <= 0 {
+    //     println!("Blast off!");
+    //     break;
+    // }
+
+    if seconds % 2 == 0 {
+        println!("{} seconds (even number), skipping 3 seconds", seconds);
+        seconds -= 3;
+        continue; // skip the rest of the loop and go to the next iteration
+    }
+    
+    println!("{} seconds left", seconds);
+    seconds -= 1;
+
+   }
+
+   println!("Blast off!");
+
+
+   // --------------------------------------------------------------
+   // Recursion
+   // --------------------------------------------------------------
+
+   fn count_down(n: i32) {
+    if n <= 0 {
+        println!("Blast off!");
+    }
+    else {
+        println!("{} seconds left", n);
+        count_down(n - 1);
+    }
+
+    //break down the function call with return
+    // if n <= 0 {
+    //     println!("Blast off!");
+    //     return;
+    // }
+    // println!("{} seconds left", n);
+    // count_down(n - 1);
+   }
+
+   // Recursion with a function call
+   count_down(10);
+
+
 
 }
